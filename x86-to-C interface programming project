@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+ 
 // Define kernel functions
 void c_kernel(float *A, float *B, int n, float *sdot) {
     // Implement the C version of the dot product kernel

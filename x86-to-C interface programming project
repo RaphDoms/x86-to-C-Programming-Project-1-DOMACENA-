@@ -82,8 +82,33 @@ int main() {
 
 =========================================================================================================
 x86-64 Assembly
+
+%include "io64.inc"
+
+section .data
+    fmt db "Dot Product: %f", 10, 0
+
 section .text
+global main
 global dot_product_asm
+
+main:
+    ; Initialize stack frame
+    push rbp
+    mov rbp, rsp
+    
+    ; Call the dot_product_asm function
+    ; Pass parameters: rdi = n, rsi = A, rdx = B, rcx = &sdot
+    call dot_product_asm
+    
+    ; Print the result
+    mov rdi, fmt
+    mov rax, 0
+    call printf64
+    ; Exit program
+    mov rax, 0
+    leave
+    ret
 
 dot_product_asm:
     mov r8, 0        ; Initialize sdot to 0
@@ -106,5 +131,4 @@ dot_product_end:
     movss xmm0, [rsp]  ; Load sdot from the stack to xmm0
     movss [rcx], xmm0  ; Store the final result in sdot
     ret
-
 

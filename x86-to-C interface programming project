@@ -86,7 +86,7 @@ x86-64 Assembly
 %include "io64.inc"
 
 section .data
-    fmt db "Dot Product: %f", 10, 0
+    fmt db "Dot Product: %f", 10, 0 
 
 section .text
 global main

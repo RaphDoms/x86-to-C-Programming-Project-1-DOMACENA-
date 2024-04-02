@@ -104,7 +104,6 @@ main:
     ; Print the result
     mov rdi, fmt
     mov rax, 0
-    call printf64
     ; Exit program
     mov rax, 0
     leave
